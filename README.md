@@ -195,11 +195,21 @@ Nuestra señal con los etiquetados queda como:
 <img src="img/our_vad.png" align="center">
 
 
+
 - Explique, si existen. las discrepancias entre el etiquetado manual y la detección automática.
+
+Los desajustes más pequeños se producen en los cambios de sonoridad, en los tramos toman una gran cantidad de valores. No obstante, el desajuste más importante es en la dicción del segundo nombre, que tiene una potencia notablemente menor que el resto.
+
+
 
 - Evalúe los resultados sobre la base de datos `db.v4` con el script `vad_evaluation.pl` e inserte a 
   continuación las tasas de sensibilidad (*recall*) y precisión para el conjunto de la base de datos (sólo
   el resumen).
+
+<img src="img/results_database.png" align="center">
+
+Como era de esperar, al optimizar los parámetros sobre la base de datos los resultados globales son mucho mejores que los de nuestro caso, que tiene un segmento sonoro con amplitud anómalamente baja.
+
 
 
 ### Trabajos de ampliación
@@ -215,11 +225,21 @@ Nuestra señal con los etiquetados queda como:
 - Si ha usado `docopt_c` para realizar la gestión de las opciones y argumentos del programa `vad`, inserte
   una captura de pantalla en la que se vea el mensaje de ayuda del programa.
 
+<img src="img/vad_help.png" align="center">
+
+Observaciones:
+* Los valores default son los óptimos, de manera que, al ejecutar vad sin opciones sobre la database, se obtendran los mejores resultados
+* Como se ha comentado en el ejercicio básico 2, se puede modificar el parámetro correspondiente al zcr, aunque se haya decidido prescindir de él para la detección.
+
 
 ### Contribuciones adicionales y/o comentarios acerca de la práctica
 
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).
+
+Algoritmos de detección: fichero 'getBestParameters' en la carpeta 'scripts', Matlab.
+
+Parámetros alternativos: tiempo de trama.
 
 - Si lo desea, puede realizar también algún comentario acerca de la realización de la práctica que
   considere de interés de cara a su evaluación.
