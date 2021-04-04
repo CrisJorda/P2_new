@@ -237,6 +237,7 @@ Observaciones:
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).
 
+Automatización del trabajo: modificación del archivo 'run_vad.sh' en 'scripts' (código comentado).
 Algoritmos de detección: fichero 'getBestParameters' en la carpeta 'scripts', Matlab.
 
 Parámetros alternativos: tiempo de trama.
