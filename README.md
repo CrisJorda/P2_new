@@ -228,7 +228,7 @@ Como era de esperar, al optimizar los parámetros sobre la base de datos los res
 <img src="img/vad_help.png" align="center">
 
 Observaciones:
-* Los valores default son los óptimos, de manera que, al ejecutar vad sin opciones sobre la database, se obtendran los mejores resultados
+* Los valores default son los óptimos, de manera que, al ejecutar vad sin opciones sobre la database, se obtendrán los mejores resultados
 * Como se ha comentado en el ejercicio básico 2, se puede modificar el parámetro correspondiente al zcr, aunque se haya decidido prescindir de él para la detección.
 
 
@@ -237,10 +237,10 @@ Observaciones:
 - Indique a continuación si ha realizado algún tipo de aportación suplementaria (algoritmos de detección o 
   parámetros alternativos, etc.).
 
-Automatización del trabajo: modificación del archivo 'run_vad.sh' en 'scripts' (código comentado).
-Algoritmos de detección: fichero 'getBestParameters' en la carpeta 'scripts', Matlab.
+Automatización del trabajo: modificación del archivo `run_vad.sh` en `scripts` (código comentado).
+Algoritmos de detección: fichero `getBestParameters` en la carpeta `scripts`, Matlab.
 
-Parámetros alternativos: tiempo de trama.
+Parámetros alternativos: tiempo de trama `ftime`.
 
 - Si lo desea, puede realizar también algún comentario acerca de la realización de la práctica que
   considere de interés de cara a su evaluación.
