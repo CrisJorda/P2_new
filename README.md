@@ -216,15 +216,20 @@ Como era de esperar, al optimizar los parámetros sobre la base de datos los res
 
 #### Cancelación del ruido en los segmentos de silencio
 
+- Si ha desarrollado el algoritmo para la cancelación de los segmentos de silencio, inserte una gráfica en
+  la que se vea con claridad la señal antes y después de la cancelación (puede que `wavesurfer` no sea la
+  mejor opción para esto, ya que no es capaz de visualizar varias señales al mismo tiempo).
+
+
 Para poder crear un archivo .wav que sea como el original pero cambiando los tramos de señal que nuestro VAD ha detectado como silencio por ceros, hemos usado la librería libsndfile, que facilita la lectura y escritura de ficheros de audio de diversas extensiones, incluyendo los .wav 
 
 Lo primero que hemos hecho en main_vad.c es crear las variables n_write y cpos, que almacenan respectivamente el número de ítems escritos en el fichero y la posición del cursor de escritura. 
 
-<img src="img/ceros1.png" align="center">
+<img src="img/ceros1.PNG" align="center">
 
 Después hemos completado los apartados de main_vad.c señalizados con ‘TO DO’ que atañen a la creación del fichero .wav con los silencios substituidos. 
 
-<img src="img/ceros2.png" align="center">
+<img src="img/ceros2.PNG" align="center">
 
 Como puede verse en los comentarios, básicamente lo que se hace es: 
 
@@ -234,19 +239,14 @@ En el segundo recuadro: si el detector ha calificado la trama leída como silenc
 
 Una vez modificado nuestro main, para obtener el fichero de salida, recompilamos el programa usando ninja y ejecutamos el ejecutable vad usando las opciones -i, -o y -w que indican respectivamente el archivo .wav a leerse, y los archivos .vad y .wav (con los silencios a cero) que van a generarse. 
 
-<img src="img/ceros3.png" align="center">
+<img src="img/ceros3.PNG" align="center">
 
 Si analizamos el fichero obtenido con wavesurfer, vemos que efectivamente, las tramas que el detector ha señalizado como silencio han quedado sustituidas por 0. 
 
-<img src="img/ceros4.png" align="center">
+<img src="img/ceros4.PNG" align="center">
 
 Si escuchamos el fichero, oímos claramente los tres nombres, y en el resto de tramas calificadas de silencio no se oye absolutamente nada. 
 Por último mostramos una comparativa gráfica de cómo era la señal original versus como ha quedado después de eliminar las tramas silenciosas: 
-
-
-- Si ha desarrollado el algoritmo para la cancelación de los segmentos de silencio, inserte una gráfica en
-  la que se vea con claridad la señal antes y después de la cancelación (puede que `wavesurfer` no sea la
-  mejor opción para esto, ya que no es capaz de visualizar varias señales al mismo tiempo).
 
 #### Gestión de las opciones del programa usando `docopt_c`
 
