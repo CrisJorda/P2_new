@@ -105,14 +105,14 @@ Ejercicios
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de
   potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
-Para poder visualizar esta gráfica, creamos 3 ficheros conteniendo respectivamente la potencia, amplitud y tasa de cruces por cero a partir del procesado que hace p1 de nuesra señal pav_p2.wav. 
+Para poder visualizar esta gráfica, creamos 3 ficheros conteniendo respectivamente la potencia, amplitud y tasa de cruces por cero a partir del procesado que hace p1 de nuestra señal pav_p2.wav. 
 
 Primero procesamos la señal y escribimos el resultado en el fichero de texto p2_processed.txt. 
 
 ```.sh
 	./p1 pav_p2.wav > p2_processed.txt
 ```
-Después creamos 3 ficheros de texto alternativos conteniendo respectivamente la potencia, amplitud y tasa de cruces por 0 de la señal. 
+Después creamos 3 ficheros de texto alternativos conteniendo respectivamente la potencia, amplitud y tasa de cruces por cero de la señal. 
 
 ```.sh
 	cut -f2 p2_processed.txt p2_processed.txt > pav_p2_pot.pot 
@@ -121,7 +121,7 @@ Después creamos 3 ficheros de texto alternativos conteniendo respectivamente la
 ```
 <img src="img/wavanalysis.PNG" align="center">
 
-En la imagen podemos ver, de arriba a abajo, el etiquetado manual de segmentos de voz y silencio, la potencia de la señal, la amplitud de la señal y la tasa de cruces por cero. 
+En la imagen podemos ver, de arriba a abajo, el etiquetado manual de segmentos de voz y silencio, la potencia de la señal, la amplitud de la señal y la tasa de cruces por cero. Por último, la señal completa .wav . 
 
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
