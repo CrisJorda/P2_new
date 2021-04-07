@@ -105,14 +105,67 @@ Ejercicios
   continuación, una captura de `wavesurfer` en la que se vea con claridad la señal temporal, el contorno de
   potencia y la tasa de cruces por cero, junto con el etiquetado manual de los segmentos.
 
+Para poder visualizar esta gráfica, creamos 3 ficheros conteniendo respectivamente la potencia, amplitud y tasa de cruces por cero a partir del procesado que hace p1 de nuesra señal pav_p2.wav. 
+
+Primero procesamos la señal y escribimos el resultado en el fichero de texto p2_processed.txt. 
+
+```.sh
+	./p1 pav_p2.wav > p2_processed.txt
+```
+Después creamos 3 ficheros de texto alternativos conteniendo respectivamente la potencia, amplitud y tasa de cruces por 0 de la señal. 
+
+```.sh
+	cut -f2 p2_processed.txt p2_processed.txt > pav_p2_pot.pot 
+	cut -f3 p2_processed.txt p2_processed.txt > pav_p2_amp.pot 
+	cut -f4 p2_processed.txt p2_processed.txt > pav_p2_zeros.pot
+```
+<img src="img/wavanalysis.PNG" align="center">
+
+En la imagen podemos ver, de arriba a abajo, el etiquetado manual de segmentos de voz y silencio, la potencia de la señal, la amplitud de la señal y la tasa de cruces por cero. 
+
 - A la vista de la gráfica, indique qué valores considera adecuados para las magnitudes siguientes:
 
-	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para
-	  estar seguros de que un segmento de señal se corresponde con voz.
+	* Incremento del nivel potencia en dB, respecto al nivel correspondiente al silencio inicial, para estar seguros de que un segmento de señal se corresponde con voz.
+
+Para poder extraer estos datos con más precisión que solo usando la gráfica, hemos creado con wavesurfer una señal que es tan solo el silencio inicial de nuestra señal completa y la hemos procesado con p1. 
+
+```.sh
+	./p1 initial_silence_pav_p2.wav ini_s_analysis.txt
+```
+
+Con esto hemos obtenido un fichero txt con los valores de potencia, amplitud y tasa de cruces por cero de este silencio inicial: 
+
+<img src="img/intro1.PNG" align="center">
+
+* Nivel de potencia en el silencio inicial: entre -36 y -50 dBs. 
+
+* Tasa de cruces por cero nivel inicial: tiene valores muy dispares, pero suele encontrarse entre 200-500. 
+
+Para poder analizar las diferencias con el fragmento de sonido, analizamos el fichero .wav completo. 
+
+<img src="img/intro2.PNG" align="center">
+
+Hasta el segmento 47 nos encontrábamos en el silencio inicial. Vemos que después de una breve transición la potencia pasa de -45 dBs a -23 dBs, que es cuando vamos a considerar razonable que empieza la señal de voz. 
+
+* Nivel de potencia para sonido: unos -20 dBs.
+
+* Valor mínimo del incremento para saber que es voz: 15 dBs
 
 	* Duración mínima razonable de los segmentos de voz y silencio.
 
+Para poder determinar esta duración mínima razonable, visualizamos contenido del fichero .lab : 
+
+```.sh
+	cat pav_p2.lab
+```
+<img src="img/intro3.PNG" align="center">
+
+* Duración mínima razonable voz: 0.4s
+* Duración mínima razonable silencio: 0.48s 
+
 	* ¿Es capaz de sacar alguna conclusión a partir de la evolución de la tasa de cruces por cero?
+
+Es interesante observar que la tasa de cruces por cero aumenta significativamente en los segmentos etiquetados como voz, llegando incluso a doblar la tasa de los segmentos de silencio. 
 
 
 ### Desarrollo del detector de actividad vocal
@@ -271,6 +324,8 @@ Automatización del trabajo: modificación del archivo `run_vad.sh` en `scripts`
 Algoritmos de detección: fichero `getBestParameters` en la carpeta `scripts`, Matlab.
 
 Parámetros alternativos: tiempo de trama `ftime`.
+
+Código en python para realizar una mejor visualización de las señales .wav después de reemplazar los segmentos de silencio por ceros: archivo `graphs.py` en `scripts`. 
 
 - Si lo desea, puede realizar también algún comentario acerca de la realización de la práctica que
   considere de interés de cara a su evaluación.
