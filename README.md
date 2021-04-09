@@ -274,7 +274,7 @@ Como era de esperar, al optimizar los parámetros sobre la base de datos los res
   mejor opción para esto, ya que no es capaz de visualizar varias señales al mismo tiempo).
 
 
-Para poder crear un archivo .wav que sea como el original pero cambiando los tramos de señal que nuestro VAD ha detectado como silencio por ceros, hemos usado la librería libsndfile, que facilita la lectura y escritura de ficheros de audio de diversas extensiones, incluyendo los .wav 
+Para poder crear un archivo .wav que sea como el original pero cambiando los tramos de señal que nuestro VAD ha detectado como silencio por ceros, hemos usado la librería [libsndfile](http://www.mega-nerd.com/libsndfile/api.html#seek), que facilita la lectura y escritura de ficheros de audio de diversas extensiones, incluyendo los .wav 
 
 Lo primero que hemos hecho en main_vad.c es crear las variables n_write y cpos, que almacenan respectivamente el número de ítems escritos en el fichero y la posición del cursor de escritura. 
 
